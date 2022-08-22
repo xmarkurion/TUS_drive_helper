@@ -22,5 +22,13 @@ public class MainController {
         System.out.println("Btn stop Clicked");
     }
 
+    public void btnInFolderClick() {
+        System.out.println("Btn inFolder Clicked");
+    }
+
+    public void btnOutFolderClick() {
+        System.out.println("Btn outFolder Clicked");
+    }
+
 
 }
