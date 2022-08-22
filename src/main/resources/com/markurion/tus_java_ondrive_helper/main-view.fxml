@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.markurion.tus_java_ondrive_helper.MainController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="584.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/onedrive.gif" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnAction" layoutX="579.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnClick" text="Button" />
+      <Button fx:id="btnInfo" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnInfoClick" text="i">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+      </Button>
+      <TextField fx:id="tfieldSourcePath" layoutX="50.0" layoutY="25.0" prefHeight="26.0" prefWidth="419.0" />
+      <Label layoutX="50.0" layoutY="7.0" text="Source path:" />
+      <TextField fx:id="tfieldDestPath" layoutX="50.0" layoutY="81.0" prefHeight="26.0" prefWidth="419.0" />
+      <Label layoutX="50.0" layoutY="63.0" text="Dest path:" />
+      <TextField fx:id="tfieldInfo" layoutX="50.0" layoutY="140.0" prefHeight="26.0" prefWidth="419.0" />
+      <Label layoutX="237.0" layoutY="122.0" text="Info status" />
+      <Button fx:id="btnStart" layoutX="50.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnStartClick" prefHeight="26.0" prefWidth="186.0" text="Start" />
+      <Button fx:id="btnStop" layoutX="283.0" layoutY="181.0" mnemonicParsing="false" onAction="#btnStopClick" prefHeight="26.0" prefWidth="185.0" text="Stop" />
+   </children>
+</AnchorPane>
