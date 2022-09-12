@@ -58,9 +58,9 @@ public class MainController {
 
     public void btnInFolderClick() throws IOException {
         System.out.println("Btn inFolder Clicked");
-        //this.folder = ser.pickFolderDBB(tfieldSourcePath,stage);
-        this.folder = new File("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
-        tfieldSourcePath.setText("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
+        this.folder = ser.pickFolderDBB(tfieldSourcePath,stage);
+//        this.folder = new File("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
+//        tfieldSourcePath.setText("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
 
         tfieldName.setDisable(false);
         tfieldInfo.setText("Please enter title of the folder then press Start.");

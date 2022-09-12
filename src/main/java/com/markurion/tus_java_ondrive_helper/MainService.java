@@ -11,14 +11,14 @@ import java.util.Date;
 
 public class MainService {
     private final String nowDate;
-    private final Date date;
+    private final String date;
 
     public MainService(){
         this.nowDate = formatedDate();
-        this.date = new Date();
+        this.date = formatedDate();
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
@@ -28,7 +28,8 @@ public class MainService {
 
     private String formatedDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd");
-        return sdf.format(this.date);
+        Date dateOBJ = new Date();
+        return sdf.format(dateOBJ);
     }
 
 
