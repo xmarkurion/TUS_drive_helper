@@ -1,33 +1,107 @@
 package com.markurion.tus_java_ondrive_helper;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import java.awt.Desktop;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import org.json.JSONObject;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class MainController {
-    public Button btnAction;
+    public Stage stage;
+    public Button btnClose;
+    public Button btnFinish;
+    public Button btnInfo;
+    public Label labelDate;
+    public TextField tfieldSourcePath;
+    public TextField tfieldName;
+    public TextField tfieldInfo;
+    private MainService ser;
+    public File folder;
+    public File createdFolderPath;
+    public String folderName;
 
-    public void btnClick(){
-        System.out.println("Btn Clicked");
+    private static FileWriter file;
+
+    public MainController(){
+        ser = new MainService();
+    }
+
+    @FXML public void initialize(){
+        tfieldName.setDisable(true);
+        tfieldInfo.setEditable(false);
+        btnFinish.setDisable(true);
+        labelDate.setText(ser.getNowDate() + "__");
+    }
+
+    public void btnClose(){
+        System.out.println("Btn close Clicked");
+        Platform.exit();
     }
 
     public void btnInfoClick(){
         System.out.println("Btn info Clicked");
     }
 
-    public void btnStartClick(){
-        System.out.println("Btn start Clicked");
+    public void btnFinishClick(){
+        System.out.println("Btn Finish Clicked");
     }
 
-    public void btnStopClick(){
-        System.out.println("Btn stop Clicked");
-    }
-
-    public void btnInFolderClick() {
+    public void btnInFolderClick() throws IOException {
         System.out.println("Btn inFolder Clicked");
+        //this.folder = ser.pickFolderDBB(tfieldSourcePath,stage);
+        this.folder = new File("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
+        tfieldSourcePath.setText("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
+
+        tfieldName.setDisable(false);
+        tfieldInfo.setText("Please enter title of the folder then press Start.");
     }
 
-    public void btnOutFolderClick() {
-        System.out.println("Btn outFolder Clicked");
+    public void btnStartClick() throws IOException {
+        System.out.println("Btn start Clicked");
+        tfieldName.setDisable(true);
+        this.folderName = labelDate.getText() + tfieldName.getText();
+        tfieldInfo.setText("Folder \"" + folderName + "\" is created on your desktop.");
+        ConsoleColors.consolePrintln(ConsoleColors.BLACK_BACKGROUND, "Folder: " + folderName);
+
+        String stringPath = System.getProperty("user.home") + "\\Desktop\\"+ folderName;
+        new File(stringPath).mkdir();
+        createdFolderPath = new File(stringPath);
+        System.out.println(createdFolderPath.getPath());
+    }
+
+    public void btnOpenWorkDir() throws IOException {
+        System.out.println("Btn btnOpenWorkDir Clicked");
+        if(folder != null){
+            Desktop.getDesktop().open(folder);
+        }
+    }
+
+    public void btnOpenSourceDir() throws IOException {
+        System.out.println("Btn btnOpenSourceDir Clicked");
+        if(folder != null){
+            Desktop.getDesktop().open(createdFolderPath);
+        }
+    }
+
+    public void createInfoJson() throws IOException {
+//        JSONObject data = new JSONObject();
+//        data.put("Init_Date", ser.getDate());
+//        data.put("Source_Folder",createdFolderPath.getPath());
+//        data.put("Created_Folder+Path", createdFolderPath.getPath());
+//
+//        file = new FileWriter(createdFolderPath.getPath() + "\\data.json");
+//        file.write(String.valueOf(data));
+//    }
     }
 
 

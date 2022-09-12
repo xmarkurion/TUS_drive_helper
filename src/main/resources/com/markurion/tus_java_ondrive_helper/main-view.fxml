@@ -8,43 +8,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.markurion.tus_java_ondrive_helper.MainController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.markurion.tus_java_ondrive_helper.MainController">
    <children>
-      <TextArea editable="false" layoutX="10.0" layoutY="156.0" prefHeight="94.0" prefWidth="487.0">
+      <TextArea editable="false" layoutX="10.0" layoutY="101.0" prefHeight="94.0" prefWidth="487.0">
          <effect>
             <SepiaTone />
          </effect>
       </TextArea>
-      <Button fx:id="btnAction" layoutX="359.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnClick" text="Don't click this button" />
-      <Button fx:id="btnInfo" layoutX="7.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnInfoClick" text="i">
+      <Button fx:id="btnClose" layoutX="455.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnClose" text="Close" />
+      <Button fx:id="btnInfo" layoutX="7.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnInfoClick" text="i">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </Button>
       <TextField fx:id="tfieldSourcePath" editable="false" layoutX="78.0" layoutY="18.0" prefHeight="26.0" prefWidth="419.0" />
-      <Label layoutX="208.0" layoutY="2.0" text="Source folder:">
+      <TextField fx:id="tfieldInfo" alignment="TOP_CENTER" layoutX="84.0" layoutY="126.0" prefHeight="26.0" prefWidth="353.0" text="Select source folder." />
+      <Label layoutX="215.0" layoutY="103.0" text="Info status">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <TextField fx:id="tfieldDestPath" editable="false" layoutX="78.0" layoutY="64.0" prefHeight="26.0" prefWidth="419.0" />
-      <Label layoutX="217.0" layoutY="48.0" text="Dest path:">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <TextField fx:id="tfieldInfo" alignment="TOP_CENTER" layoutX="84.0" layoutY="179.0" prefHeight="26.0" prefWidth="353.0" text="Select source folder." />
-      <Label layoutX="215.0" layoutY="156.0" text="Info status">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Label>
-      <Button fx:id="btnStart" layoutX="20.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnStartClick" prefHeight="26.0" prefWidth="197.0" text="Start" />
-      <Button fx:id="btnStop" layoutX="299.0" layoutY="214.0" mnemonicParsing="false" onAction="#btnStopClick" prefHeight="26.0" prefWidth="185.0" text="Stop" />
+      <Button fx:id="btnStart" layoutX="20.0" layoutY="161.0" mnemonicParsing="false" onAction="#btnStartClick" prefHeight="26.0" prefWidth="197.0" text="Start" />
+      <Button fx:id="btnFinish" layoutX="299.0" layoutY="161.0" mnemonicParsing="false" onAction="#btnFinishClick" prefHeight="26.0" prefWidth="185.0" text="Finish" />
       <Button fx:id="btnInPath" layoutX="4.0" layoutY="18.0" mnemonicParsing="false" onAction="#btnInFolderClick" prefHeight="25.0" prefWidth="71.0" text="Select" />
-      <Button fx:id="btnOutPath" layoutX="4.0" layoutY="63.0" mnemonicParsing="false" onAction="#btnOutFolderClick" prefHeight="25.0" prefWidth="71.0" text="Select" />
-      <TextField fx:id="tfieldName" layoutX="9.0" layoutY="118.0" prefHeight="26.0" prefWidth="487.0" />
-      <Label layoutX="188.0" layoutY="98.0" text="Title of the folder :">
+      <TextField fx:id="tfieldName" layoutX="102.0" layoutY="69.0" prefHeight="26.0" prefWidth="394.0" />
+      <Label layoutX="188.0" layoutY="49.0" text="Title of the folder :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Label layoutX="208.0" layoutY="2.0" text="Source folder:">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+      <Label fx:id="labelDate" layoutX="26.0" layoutY="73.0" text="2022-09-11__" />
+      <Button fx:id="btnOpenSourceDir" layoutX="261.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnOpenSourceDir" prefHeight="26.0" prefWidth="124.0" text="Open source Folder" />
+      <Button fx:id="btnOpenWorkDir" layoutX="102.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnOpenWorkDir" prefHeight="26.0" prefWidth="150.0" text="Open working folder" />
    </children>
 </AnchorPane>
