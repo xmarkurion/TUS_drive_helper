@@ -23,7 +23,7 @@ public class ConsoleColors {
         System.out.println(color + text + ANSI_RESET);
     }
 
-    public static void main(String[] args){
+    public static void main(){
         System.out.println("This is an presentation of colors in java console ... good to know this exist.");
         consolePrintln(BLACK, "This should be black.");
         consolePrintln(BLACK_BACKGROUND, "This should be black background;");

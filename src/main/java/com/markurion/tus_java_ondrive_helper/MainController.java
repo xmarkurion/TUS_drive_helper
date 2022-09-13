@@ -11,7 +11,10 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+import java.io.PrintWriter;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -33,13 +36,14 @@ public class MainController {
     private static FileWriter file;
 
     public MainController(){
+        ConsoleColors.main();
         ser = new MainService();
     }
 
     @FXML public void initialize(){
         tfieldName.setDisable(true);
         tfieldInfo.setEditable(false);
-        btnFinish.setDisable(true);
+//        btnFinish.setDisable(true);
         labelDate.setText(ser.getNowDate() + "__");
     }
 
@@ -52,18 +56,25 @@ public class MainController {
         System.out.println("Btn info Clicked");
     }
 
-    public void btnFinishClick(){
+    public void btnFinishClick() throws IOException {
         System.out.println("Btn Finish Clicked");
+        createInfoJson();
     }
 
     public void btnInFolderClick() throws IOException {
         System.out.println("Btn inFolder Clicked");
-        this.folder = ser.pickFolderDBB(tfieldSourcePath,stage);
+
+        try {
+            this.folder = ser.pickFolderDBB(tfieldSourcePath, stage);
 //        this.folder = new File("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
 //        tfieldSourcePath.setText("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
 
-        tfieldName.setDisable(false);
-        tfieldInfo.setText("Please enter title of the folder then press Start.");
+            tfieldName.setDisable(false);
+            tfieldInfo.setText("Please enter title of the folder then press Start.");
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     public void btnStartClick() throws IOException {
@@ -94,15 +105,22 @@ public class MainController {
     }
 
     public void createInfoJson() throws IOException {
-//        JSONObject data = new JSONObject();
-//        data.put("Init_Date", ser.getDate());
-//        data.put("Source_Folder",createdFolderPath.getPath());
-//        data.put("Created_Folder+Path", createdFolderPath.getPath());
-//
-//        file = new FileWriter(createdFolderPath.getPath() + "\\data.json");
-//        file.write(String.valueOf(data));
-//    }
+        JSONObject data = new JSONObject();
+        try {
+            data.put("Init_Date", ser.getDate());
+            data.put("Source_Folder", createdFolderPath.getPath());
+            data.put("Created_Folder+Path", createdFolderPath.getPath());
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        try(PrintWriter out = new PrintWriter(new FileWriter(createdFolderPath.getPath() + "\\data.json"))){
+            out.write(data.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
-
-
 }
+
+
+
