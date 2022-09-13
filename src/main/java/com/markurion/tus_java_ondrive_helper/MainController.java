@@ -38,6 +38,7 @@ public class MainController {
     public MainController(){
         ConsoleColors.main();
         ser = new MainService();
+        ser.setMainController(this);
     }
 
     @FXML public void initialize(){
@@ -59,21 +60,23 @@ public class MainController {
     public void btnFinishClick() throws IOException {
         System.out.println("Btn Finish Clicked");
         createInfoJson();
+        ser.createFileList();
     }
 
     public void btnInFolderClick() throws IOException {
         System.out.println("Btn inFolder Clicked");
+//            this.folder = ser.pickFolderDBB(tfieldSourcePath, stage);
 
-        try {
-            this.folder = ser.pickFolderDBB(tfieldSourcePath, stage);
+            //Laptop
+            this.folder = new File("C:\\Users\\M\\Downloads\\NewThing");
+            tfieldSourcePath.setText("C:\\Users\\M\\Downloads\\NewThing");
+            tfieldName.setText("testFolder");
+            //PC
 //        this.folder = new File("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
 //        tfieldSourcePath.setText("C:\\Users\\Marcepan\\Downloads\\New folder\\2022-09-12");
 
             tfieldName.setDisable(false);
             tfieldInfo.setText("Please enter title of the folder then press Start.");
-        }catch(IOException e){
-            System.out.println(e.getMessage());
-        }
 
     }
 

@@ -7,15 +7,26 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class MainService {
     private final String nowDate;
     private final String date;
 
+    private MainController mainController;
+    private ArrayList<File> listOfFiles;
+
+
     public MainService(){
         this.nowDate = formatedDate();
         this.date = formatedDate();
+
+        listOfFiles = new ArrayList<>();
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 
     public String getDate(){
@@ -58,5 +69,12 @@ public class MainService {
         }
         field.setStyle("-fx-control-inner-background: green");
         return datt;
+    }
+
+    /**
+     * Creates a list of files inside a folder.
+     */
+    public void createFileList(){
+        System.out.println(mainController.createdFolderPath.getPath());
     }
 }
