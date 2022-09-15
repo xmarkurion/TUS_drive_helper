@@ -6,16 +6,18 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Stream;
 
 public class MainService {
     private final String nowDate;
     private final String date;
 
     private MainController mainController;
-    private ArrayList<File> listOfFiles;
 
 
     public MainService(){
@@ -76,5 +78,21 @@ public class MainService {
      */
     public void createFileList(){
         System.out.println(mainController.createdFolderPath.getPath());
+
+    }
+
+    public ArrayList<File> generateFileList(Path folderPatch) throws IOException {
+        ArrayList<File> listOfFiles = null;
+
+        try {
+            Stream<Path> paths = Files.walk(folderPatch);
+            paths.forEach((pathTofile) -> {
+                File currentFile = new File("" + pathTofile);
+                listOfFiles.add(currentFile);
+            });
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return listOfFiles;
     }
 }
