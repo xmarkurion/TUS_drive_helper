@@ -73,8 +73,9 @@ public class MainService {
     /**
      * Creates a list of files inside a folder.
      */
-    public void createFileList(){
+    public void createFileList() throws IOException {
         System.out.println(mainController.createdFolderPath.getPath());
+//        this.listOfFiles = generateFileList(Path.of(String.valueOf(mainController.createdFolderPath)));
 
     }
 
