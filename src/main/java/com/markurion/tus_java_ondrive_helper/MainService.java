@@ -16,15 +16,14 @@ import java.util.stream.Stream;
 public class MainService {
     private final String nowDate;
     private final String date;
-
     private MainController mainController;
+    private ArrayList<File> listOfFiles;
 
 
     public MainService(){
         this.nowDate = formatedDate();
         this.date = formatedDate();
-
-        listOfFiles = new ArrayList<>();
+        this.listOfFiles = new ArrayList<>();
     }
 
     public void setMainController(MainController mainController) {
@@ -44,8 +43,6 @@ public class MainService {
         Date dateOBJ = new Date();
         return sdf.format(dateOBJ);
     }
-
-
 
     /**
      * Opens file picker in java FX.
